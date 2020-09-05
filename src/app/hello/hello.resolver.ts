@@ -16,7 +16,7 @@ export class HelloResolver implements Resolve<any> {
         ]).pipe(
             map(allResponses => {
                 return {
-                    Advertisements: allResponses[allResponses.length - 1]
+                    Data: allResponses[allResponses.length - 1]
                 };
             })
         );

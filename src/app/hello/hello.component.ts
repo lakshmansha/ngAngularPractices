@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-hello',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HelloComponent implements OnInit {
 
-  constructor() { }
+  //#region Basic Variables
+
+  title: string;
+  Data: string[];
+
+  //#endregion
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.title = this.route.snapshot.data.title;
+    this.Data = this.route.snapshot.data.responses['Data'];
   }
 
 }
