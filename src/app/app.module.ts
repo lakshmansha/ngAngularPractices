@@ -1,17 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HelloModule } from './hello/hello.module';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello/hello.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HelloComponent
+    AppComponent    
   ],
   imports: [
     BrowserModule,
+    HelloModule,
     AppRoutingModule
   ],
   providers: [],

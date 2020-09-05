@@ -6,9 +6,14 @@ import { of, Observable } from 'rxjs';
 })
 export class HelloService {
 
-  constructor() { }
+  tempData: string[] = [];
+
+  constructor() {
+    this.tempData.push("Service");
+    this.tempData.push("Resolver");
+  }
 
   getData(): Observable<any[]> {
-    return of([]);
+    return of(this.tempData);
   }
 }
