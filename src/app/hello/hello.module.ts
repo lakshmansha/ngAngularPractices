@@ -5,6 +5,7 @@ import { HelloRoutingModule } from './hello-routing.module';
 import { HelloComponent } from './hello.component';
 
 import { HelloService } from './hello.service';
+import { HelloResolver } from './hello.resolver';
 
 @NgModule({
   declarations: [HelloComponent],
@@ -13,7 +14,8 @@ import { HelloService } from './hello.service';
     HelloRoutingModule
   ],
   providers: [
-    HelloService
+    HelloService,
+    HelloResolver
   ]
 })
 export class HelloModule { }

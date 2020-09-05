@@ -1,10 +1,24 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { HelloService } from './hello.service';
 
 @Injectable({ providedIn: 'root' })
-export class YourResolver implements Resolve<any> {
+export class HelloResolver implements Resolve<any> {
+
+    constructor(private helloService: HelloService) { }
+
     resolve(route: ActivatedRouteSnapshot): Observable<any> | Promise<any> | any {
-        return ;
+        return forkJoin([
+            this.helloService.getData()
+        ]).pipe(
+            map(allResponses => {
+                return {
+                    Advertisements: allResponses[allResponses.length - 1]
+                };
+            })
+        );
     }
 }
