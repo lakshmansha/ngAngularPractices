@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { HelloModule } from './hello/hello.module';
 
@@ -18,6 +19,7 @@ export function initConfig(appConfigService: AppConfigService) {
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     HelloModule,
     AppRoutingModule
   ],

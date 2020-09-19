@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { environment } from '../../environments/environment';
+
 @Component({
   selector: 'app-hello',
   templateUrl: './hello.component.html',
@@ -25,7 +27,7 @@ export class HelloComponent implements OnInit {
   ngOnInit(): void {
     this.title = this.route.snapshot.data.title;
     this.Data = this.route.snapshot.data.responses['Data'];
-    this.EnvName = this.route.snapshot.data.EnvName;
+    this.EnvName = environment.EnvName;
   }
 
 }
