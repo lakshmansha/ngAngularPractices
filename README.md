@@ -1,5 +1,13 @@
 # NgAngularPractices
 
+Source File for Blog **Angular Best Practices** 
+
+Check out here for [Blog](https://angular-best-practices.blogspot.com/)
+
+Check out here for [Wiki](https://github.com/lakshmansha/ngAngularPractices/wiki) 
+
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.6.
 
 ## Development server
