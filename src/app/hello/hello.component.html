@@ -9,3 +9,23 @@
         <li *ngFor="let item of Data">{{ item }}</li>
     </ul>
 </div>
+<div>
+    <h3>Using <b>ngStyle</b></h3>
+    <ul>
+        <li *ngFor="let item of Status" [ngStyle]="{ 'color': getColor(item.Status) }">{{ item.Message }}</li>
+    </ul>
+</div>
+
+<div>
+    <h3>Using <b>ngClass</b></h3>
+    <ul>
+        <li *ngFor="let item of Status" class="default" [class.deff]="item.Status.toLocaleLowerCase() === 'success'" [ngClass]="item.Status.toLocaleLowerCase()">{{ item.Message }}</li>
+    </ul>
+</div>
+
+<div>
+    <h3>Using <b>Class </b></h3>
+    <ul>
+        <li *ngFor="let item of Status" class="default" [class.success]="item.Status.toLocaleLowerCase() === 'success'">{{ item.Message }}</li>
+    </ul>
+</div>
