@@ -12,11 +12,13 @@ export class HelloResolver implements Resolve<any> {
 
     resolve(route: ActivatedRouteSnapshot): Observable<any> | Promise<any> | any {
         return forkJoin([
-            this.helloService.getData()
+            this.helloService.getData(),
+            this.helloService.getStatus()
         ]).pipe(
             map(allResponses => {
                 return {
-                    Data: allResponses[allResponses.length - 1]
+                    Data: allResponses[allResponses.length - 2],
+                    Status: allResponses[allResponses.length - 1]
                 };
             })
         );
