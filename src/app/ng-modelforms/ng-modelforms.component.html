@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="card-header">
+        Add Status via Ng Model Forms
+      </div>
+    <div class="card-body">        
+        <form class="form">
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <input type="text" id="frmStatus" [(ngModel)]="Status" [ngModelOptions]="{standalone: true}" class="form-control" />
+                <label class="form-label" for="frmStatus">Status</label>
+            </div>
+
+            <!-- Text input -->
+            <div class="form-outline mb-4">
+                <input type="text" id="frmMessage" [(ngModel)]="Message" [ngModelOptions]="{standalone: true}" class="form-control" />
+                <label class="form-label" for="frmMessage">Message</label>
+            </div>
+
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary mb-4" (click)="Submit()">
+                Add Status
+            </button>
+        </form>
+        <div *ngIf="IsDisplay" [ngClass]="altClass" role="alert">
+            {{Msg}}
+        </div>
+    </div>
+</div>
