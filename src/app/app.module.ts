@@ -1,8 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { SharedModule } from './shared/shared.module';
 import { HelloModule } from './hello/hello.module';
+import { NgModelformsModule } from './ng-modelforms/ng-modelforms.module';
+import { ReactiveFrmsModule } from './reactive-frm/reactive-frm.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +24,12 @@ export function initConfig(appConfigService: AppConfigService) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    SharedModule,
     HelloModule,
+    NgModelformsModule,
+    ReactiveFrmsModule,
     AppRoutingModule
   ],
   providers: [
