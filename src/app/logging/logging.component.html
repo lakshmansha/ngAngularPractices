@@ -1,0 +1,58 @@
+<!-- <p>logging works!</p>
+
+<button (click)="LogInfo()">Log Info</button>
+
+<div class="container">
+  <h5>FireBase Logs</h5>
+  <div class="row" *ngFor="let item of logs">{{ item }}</div>
+  <div class="row" *ngIf="logs.length === 0">No Logs Available</div>
+</div> -->
+<div class="card">
+  <div class="card-header">Create Logs</div>
+  <div class="card-body">
+    <div class="d-flex">Current Log Level: {{ level }}</div>
+    <div class="d-flex mt-1">
+      <button type="button" class="btn btn-danger me-2" (click)="LogError()">
+        Log Error
+      </button>
+
+      <button type="button" class="btn btn-info me-2" (click)="LogInfo()">
+        Log Info
+      </button>
+
+      <button type="button" class="btn btn-warning me-2" (click)="LogWarn()">
+        Log Warn
+      </button>
+
+      <button type="button" class="btn btn-danger me-2" (click)="LogFatal()">
+        Log Fatal
+      </button>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header">FireBase Logs</div>
+  <div class="card-body">
+    <table class="table table-responsive">
+      <thead>
+        <tr>
+          <th>Log ID</th>
+          <th>Log Date</th>
+          <th>LogLevel</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of logs">
+          <td>{{ item.loggerId }}</td>
+          <td>{{ item.LogDate }}</td>
+          <td>{{ item.LogLevel }}</td>
+          <td>{{ item.Message }}</td>
+        </tr>
+        <tr *ngIf="logs.length == 0">
+          <td colspan="4">No Logs Available</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

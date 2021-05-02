@@ -16,15 +16,27 @@ export class AppConfigService {
       .then((config: any) => {
 
         // Enabled Option Only for Production Build.
-        if(environment.production) {
-
+        if (environment.production) {
           // Set EnvName to Environment via Config.json File.
           // config.json File Won't be Part of Source Code.
           if (config.EnvName != undefined) {
             environment.EnvName = config.EnvName;
           }
+
+          if (config.IsFirebase != undefined) {
+            environment.Logging.IsFirebase = config.IsFirebase;
+
+            if (config.FireBaseAPIKey != undefined) {
+              environment.FireBase.apiKey = config.FireBaseAPIKey;
+            }
+          }
         }
 
+        if (!environment.production) {
+          if (config.FireBaseAPIKey != undefined) {
+            environment.FireBase.apiKey = config.FireBaseAPIKey;
+          }
+        }
       })
       .catch((err: any) => {
         console.error(err);
