@@ -10,21 +10,43 @@ import { Ilogger, LoggingService } from './logging.service';
 export class LoggingComponent implements OnInit {
 
   logs: Ilogger[] = [];
+  apilogs: Ilogger[] = [];
   level: string;
+  FireBase: boolean;
+  RestAPI: boolean;
   constructor(private logService: LoggingService) { }
 
   ngOnInit(): void {
     this.level = environment.Logging.LogLevel;
-    this.logService.getAllLogs().subscribe(data => {
-      const logs = data.map(e => {
-        return {
-          loggerId: e.payload.doc.id,
-          ...e.payload.doc.data() as Ilogger
-        } as Ilogger;
-      });
+    this.PageLoad();
+  }
 
-      this.logs = logs;
-    });
+  PageLoad() {
+    this.FireBase = environment.Logging.IsFirebase;
+    this.RestAPI = environment.Logging.IsRestAPI;
+    if (environment.Logging.IsFirebase) {
+      this.logService.getAllFireBaseLogs().subscribe(data => {
+        const logs = data.map(e => {
+          return {
+            loggerId: e.payload.doc.id,
+            ...e.payload.doc.data() as Ilogger
+          } as Ilogger;
+        });
+
+        this.logs = logs;
+      });
+    } else if (environment.Logging.IsRestAPI) {
+      this.logService.getAllRestLogs().subscribe(data => {
+        const logs = data.map(e => {
+          return {
+            loggerId: e['_id'],
+            ...e as Ilogger
+          } as Ilogger;
+        });
+
+        this.apilogs = logs;
+      });
+    }
   }
 
   LogError() {

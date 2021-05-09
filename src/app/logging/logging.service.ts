@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
@@ -8,7 +9,7 @@ import { environment } from 'src/environments/environment';
 export class LoggingService {
   level: LogLevel = LogLevel.All;
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, private http: HttpClient) { }
 
   debug(msg: string, rawdata?: any, ...optionalParams: any[]) {
     this.writeToLog(msg, rawdata, LogLevel.Debug, optionalParams);
@@ -56,6 +57,10 @@ export class LoggingService {
         this.LogToFireBase(value);
       }
 
+      if (environment.Logging.IsRestAPI) {
+        this.LogToRestAPI(value);
+      }
+
       // Log the value
       console.log(value);
     }
@@ -73,8 +78,20 @@ export class LoggingService {
     this.firestore.collection('logging').add({ ...val })
   }
 
-  getAllLogs() {
+  private LogToRestAPI(val: Ilogger) {
+    const url = environment.RestAPI.LoggingUrl;
+    this.http.post(url, val).subscribe((data) => {
+      console.log(data);
+    });
+  }
+
+  getAllFireBaseLogs() {
     return this.firestore.collection('logging').snapshotChanges();
+  }
+
+  getAllRestLogs() {
+    const url = environment.RestAPI.LoggingUrl;
+    return this.http.get<Ilogger[]>(url);
   }
 }
 

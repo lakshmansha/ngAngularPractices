@@ -12,7 +12,7 @@ export class LoggerResolver implements Resolve<any> {
 
     resolve(route: ActivatedRouteSnapshot): Observable<any> | Promise<any> | any {
         return forkJoin([
-            this.loggerService.getAllLogs()
+            this.loggerService.getAllFireBaseLogs()
         ]).pipe(
             map(allResponses => {
                 return {
