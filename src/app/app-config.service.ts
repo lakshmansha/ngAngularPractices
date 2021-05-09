@@ -30,6 +30,14 @@ export class AppConfigService {
               environment.FireBase.apiKey = config.FireBaseAPIKey;
             }
           }
+
+          if (config.IsRestAPI != undefined) {
+            environment.Logging.IsRestAPI = config.IsRestAPI;
+
+            if (config.RESTLoggingUrl != undefined) {
+              environment.RestAPI.LoggingUrl = config.RESTLoggingUrl;
+            }
+          }
         }
 
         if (!environment.production) {
