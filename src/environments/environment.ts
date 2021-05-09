@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   EnvName: "CDEV - ENV",
   Logging: {
-    IsFirebase: true,
+    IsFirebase: false,
+    IsRestAPI: true,
     LogLevel: "Warn"
   },
   FireBase: {
@@ -18,6 +19,9 @@ export const environment = {
     messagingSenderId: "91046398815",
     appId: "1:91046398815:web:d45d5914e543ad543ac4ea",
     measurementId: "G-6T8HRS609F"
+  },
+  RestAPI: {
+    LoggingUrl: "http://localhost:5000/logger"
   }
 };
 
