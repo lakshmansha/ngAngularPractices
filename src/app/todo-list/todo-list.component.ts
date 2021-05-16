@@ -12,7 +12,7 @@ export class TodoListComponent implements OnInit {
 
   TodoList: Todo[] = [];
 
-  constructor(private resolverService: TodoListService, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.PageLoad();
