@@ -12,6 +12,7 @@ import { HelloModule } from './hello/hello.module';
 import { NgModelformsModule } from './ng-modelforms/ng-modelforms.module';
 import { ReactiveFrmsModule } from './reactive-frm/reactive-frm.module';
 import { LoggingModule } from './logging/logging.module';
+import { TodoListModule } from './todo-list/todo-list.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,6 +45,7 @@ export function initConfig(appConfigService: AppConfigService) {
     NgModelformsModule,
     ReactiveFrmsModule,
     LoggingModule,
+    TodoListModule,
     AppRoutingModule
   ],
   providers: [
