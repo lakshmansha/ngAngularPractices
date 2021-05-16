@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Todo } from './ITodo.interface';
 import { TodoListService } from './todo-list.service';
 
@@ -11,16 +12,14 @@ export class TodoListComponent implements OnInit {
 
   TodoList: Todo[] = [];
 
-  constructor(private resolverService: TodoListService) { }
+  constructor(private resolverService: TodoListService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.PageLoad();
   }
 
   PageLoad() {
-    this.resolverService.getTodo().subscribe(data => {
-      this.TodoList = data;
-    });
+    this.TodoList = this.route.snapshot.data.responses['Todos'];
   }
 
 }

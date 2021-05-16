@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TodoListRoutingModule } from './todo-list-routing.module';
 import { TodoListComponent } from './todo-list.component';
 import { TodoListService } from './todo-list.service';
+import { TodoListResolver } from './todo-list.resolver';
 
 @NgModule({
   declarations: [TodoListComponent],
@@ -11,6 +12,6 @@ import { TodoListService } from './todo-list.service';
     CommonModule,
     TodoListRoutingModule
   ],
-  providers: [TodoListService]
+  providers: [TodoListService, TodoListResolver]
 })
 export class TodoListModule { }
