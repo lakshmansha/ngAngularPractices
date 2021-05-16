@@ -7,7 +7,7 @@ export const environment = {
   EnvName: "CDEV - ENV",
   Logging: {
     IsFirebase: false,
-    IsRestAPI: true,
+    IsRestAPI: false,
     LogLevel: "Warn"
   },
   FireBase: {
