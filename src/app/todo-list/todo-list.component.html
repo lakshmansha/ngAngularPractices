@@ -1,22 +1,76 @@
-<div class="card">
-  <div class="card-header">Todo List</div>
-  <div class="card-body">
-    <table class="table table-responsive">
-      <thead>
-        <tr>
-          <th>Task</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of TodoList">
-          <td>{{ item.Task }}</td>
-          <td>{{ item.IsCompleted ? "Completed" : "Yet To Complete" }}</td>
-        </tr>
-        <tr *ngIf="TodoList.length == 0">
-          <td colspan="2">No Todo List Available</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="row">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-header">Todo List</div>
+      <div class="card-body">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of TodoList">
+              <td>{{ item.Task }}</td>
+              <td>{{ item.IsCompleted ? "Completed" : "Yet To Complete" }}</td>
+              <td><i class="fas fa-edit" (click)="updateForm(item)"></i></td>
+            </tr>
+            <tr *ngIf="TodoList.length == 0">
+              <td colspan="2">No Todo List Available</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <div class="card-header">{{ view }} Todo</div>
+      <div class="card-body">
+        <form [formGroup]="entryForm" (ngSubmit)="Submit()">
+          <!-- Text input -->
+          <div class="form-group mb-4">
+            <label class="form-label" for="textAreaTask">Task</label>
+            <textarea
+              class="form-control"
+              formControlName="Task"
+              id="textAreaTask"
+              rows="2"
+            ></textarea>
+          </div>
+
+          <div class="form-check form-group mb-3">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="frmIsCompleted"
+              formControlName="IsCompleted"
+              style="margin-left: -1.5em"
+            />
+            <label class="form-check-label" for="frmIsCompleted">
+              IsCompleted
+            </label>
+          </div>
+
+          <!-- Submit button -->
+          <button
+            type="reset"
+            class="btn btn-warning mb-4"
+            (click)="resetForm()"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="ms-4 btn btn-primary mb-4"
+            [disabled]="entryForm.invalid"
+          >
+            {{ view }} Todo
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
