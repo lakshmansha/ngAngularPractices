@@ -60,7 +60,7 @@ export class TodoListComponent implements OnInit {
 
   Submit() {
     const todo$ =
-      this.todoId !== ''
+      this.todoId !== '' && this.todoId
         ? this.service.updateTodo(this.todoId, this.entryForm.value)
         : this.service.addTodo(this.entryForm.value);
     todo$
