@@ -20,3 +20,7 @@ export const environment = {
     LoggingUrl: "https://ngangularpracticesapi.azurewebsites.net/logger"
   }
 };
+
+export const Feature = {
+  Schema: true
+}

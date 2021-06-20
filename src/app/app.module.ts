@@ -7,18 +7,20 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BlockUIModule } from 'ng-block-ui';
 import { BlockUIHttpModule } from 'ng-block-ui/http';
 
+import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { HelloModule } from './hello/hello.module';
 import { NgModelformsModule } from './ng-modelforms/ng-modelforms.module';
 import { ReactiveFrmsModule } from './reactive-frm/reactive-frm.module';
 import { LoggingModule } from './logging/logging.module';
 import { TodoListModule } from './todo-list/todo-list.module';
+import { SchemaModule } from './schema/schema.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { environment } from 'src/environments/environment';
-import { AppConfigService } from './app-config.service';
+import { AppConfigService } from './core/app-config/app-config.service';
 import { LoggingService } from './logging/logging.service';
 
 export function initConfig(appConfigService: AppConfigService) {
@@ -40,12 +42,14 @@ export function initConfig(appConfigService: AppConfigService) {
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.FireBase),
     AngularFirestoreModule,
+    CoreModule,
     SharedModule,
     HelloModule,
     NgModelformsModule,
     ReactiveFrmsModule,
     LoggingModule,
     TodoListModule,
+    SchemaModule,
     AppRoutingModule
   ],
   providers: [
