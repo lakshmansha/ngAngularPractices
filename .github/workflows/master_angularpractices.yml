@@ -5,9 +5,9 @@ name: Build and deploy Node.js app to Azure Web App - angularpractices
 
 on:
   push:
-  branches:
-    - master
-    - develop
+    branches:
+      - master
+      - develop
   workflow_dispatch:
 
 jobs:
