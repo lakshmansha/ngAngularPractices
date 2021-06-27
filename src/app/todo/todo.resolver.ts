@@ -3,12 +3,12 @@ import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { forkJoin, Observable, } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { TodoListService } from './todo-list.service'
+import { TodoService } from './todo.service'
 
 @Injectable({ providedIn: 'root' })
-export class TodoListResolver implements Resolve<any> {
+export class TodoResolver implements Resolve<any> {
 
-    constructor(private service: TodoListService) { }
+    constructor(private service: TodoService) { }
 
     resolve(route: ActivatedRouteSnapshot): Observable<any> | Promise<any> | any {
         return forkJoin([

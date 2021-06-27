@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { TodoListComponent } from './todo-list.component';
-import { TodoListResolver } from './todo-list.resolver';
+import { TodoComponent } from './todo.component';
+import { TodoResolver } from './todo.resolver';
 
 const routes: Routes = [
   {
     path: 'todo',
-    component: TodoListComponent,
+    component: TodoComponent,
     data: { title: "Todo List Module" },
-    resolve: { responses: TodoListResolver }
+    resolve: { responses: TodoResolver }
   }
 ];
 
@@ -17,4 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TodoListRoutingModule { }
+export class TodoRoutingModule { }
