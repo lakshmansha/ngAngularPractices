@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 
-import { Todo } from './ITodo.interface';
-import { TodoListService } from './todo-list.service';
+import { Todo } from '../ITodo.interface';
+import { TodoService } from '../todo.service';
 
 @Component({
-  selector: 'app-todo-list',
-  templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.scss']
+  selector: 'app-todo-entry',
+  templateUrl: './todo-entry.component.html',
+  styleUrls: ['./todo-entry.component.scss']
 })
-export class TodoListComponent implements OnInit {
+export class TodoEntryComponent implements OnInit, OnChanges {
+  //#region Input Variables
+
+  @Input() todo: Todo;
+  @Output() todosEvent = new EventEmitter<Todo[]>();
+
+  //#endregion
+
   //#region Entry Variables
 
   view: string;
@@ -19,18 +25,19 @@ export class TodoListComponent implements OnInit {
 
   //#endregion
 
-  TodoList: Todo[] = [];
-
-  constructor(private route: ActivatedRoute, private formBuilder: FormBuilder, private service: TodoListService) {
+  constructor(private formBuilder: FormBuilder, private service: TodoService) {
     this.createForm();
   }
 
   ngOnInit(): void {
-    this.PageLoad();
   }
 
-  PageLoad() {
-    this.TodoList = this.route.snapshot.data.responses['Todos'];
+  ngOnChanges(): void {
+    if (this.todo !== undefined && this.todo !== null) {
+      this.updateForm(this.todo);
+    } else {
+      this.resetForm();
+    }
   }
 
   //#region Add Todo Variables
@@ -66,9 +73,11 @@ export class TodoListComponent implements OnInit {
     todo$
       .subscribe(
         (todos) => {
-          this.TodoList = todos;
           alert(`${this.view} Successfully`);
           this.resetForm();
+
+          //Need to Pass TodoList to Master Component
+          this.todosEvent.emit(todos);
         },
         (error) => {
           console.debug(`Todo Entry error: ${error}`);

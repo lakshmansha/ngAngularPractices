@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-6">
+    <div class="card">
+      <div class="card-header">Todo List</div>
+      <div class="card-body">
+        <table class="table table-responsive">
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of TodoList">
+              <td>{{ item.Task }}</td>
+              <td>{{ item.IsCompleted ? "Completed" : "Yet To Complete" }}</td>
+              <td><i class="fas fa-edit" (click)="updateForm(item)"></i></td>
+            </tr>
+            <tr *ngIf="TodoList.length == 0">
+              <td colspan="2">No Todo List Available</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-6">
+    <app-todo-entry
+      [todo]="todo"
+      (todosEvent)="rtnTodoList($event)"
+    ></app-todo-entry>
+  </div>
+</div>

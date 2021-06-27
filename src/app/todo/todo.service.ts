@@ -7,7 +7,7 @@ import { Todo, ITodo } from './ITodo.interface';
 @Injectable({
   providedIn: 'root'
 })
-export class TodoListService {
+export class TodoService {
 
   TodoList: Todo[] = [];
 

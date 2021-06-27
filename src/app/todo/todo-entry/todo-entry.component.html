@@ -1,0 +1,42 @@
+<div class="card">
+  <div class="card-header">{{ view }} Todo</div>
+  <div class="card-body">
+    <form class="form" [formGroup]="entryForm" (ngSubmit)="Submit()">
+      <!-- Text input -->
+      <div class="form-group mb-4">
+        <label class="form-label" for="textAreaTask">Task</label>
+        <textarea
+          class="form-control"
+          formControlName="Task"
+          id="textAreaTask"
+          rows="2"
+        ></textarea>
+      </div>
+
+      <div class="form-check form-group mb-3">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          id="frmIsCompleted"
+          formControlName="IsCompleted"
+          style="margin-left: -1.5em"
+        />
+        <label class="form-check-label" for="frmIsCompleted">
+          IsCompleted
+        </label>
+      </div>
+
+      <!-- Submit button -->
+      <button type="reset" class="btn btn-warning mb-4" (click)="resetForm()">
+        Cancel
+      </button>
+      <button
+        type="submit"
+        class="ms-4 btn btn-primary mb-4"
+        [disabled]="entryForm.invalid"
+      >
+        {{ view }} Todo
+      </button>
+    </form>
+  </div>
+</div>
