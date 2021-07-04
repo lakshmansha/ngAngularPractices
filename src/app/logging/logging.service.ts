@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { propertyMap } from '../core/mapper';
 
 @Injectable({
   providedIn: 'root'
@@ -91,7 +92,7 @@ export class LoggingService {
 
   getAllRestLogs() {
     const url = environment.RestAPI.LoggingUrl;
-    return this.http.get<Ilogger[]>(url);
+    return this.http.get<logger[]>(url);
   }
 }
 
@@ -102,6 +103,20 @@ export interface Ilogger {
   Message: string;
   OptionalParams: any;
   RawData: any;
+}
+
+export class logger implements Ilogger {
+  @propertyMap('_id')
+  loggerId: string;
+  LogDate: string;
+  LogLevel: string;
+  Message: string;
+  OptionalParams: any;
+  RawData: any;
+
+  constructor() {
+    this.loggerId = null;
+  }
 }
 
 export enum LogLevel {
