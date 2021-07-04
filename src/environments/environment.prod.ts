@@ -3,7 +3,7 @@ export const environment = {
   EnvName: "",
   Logging: {
     IsFirebase: false,
-    IsRestAPI: false,
+    IsRestAPI: true,
     LogLevel: "Warn"
   },
   FireBase: {
