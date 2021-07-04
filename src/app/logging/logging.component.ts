@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Ilogger, LoggingService } from './logging.service';
+import { Ilogger, logger, LoggingService } from './logging.service';
+
+import { ModelMapper } from '../core/mapper';
 
 @Component({
   selector: 'app-logging',
@@ -9,8 +11,8 @@ import { Ilogger, LoggingService } from './logging.service';
 })
 export class LoggingComponent implements OnInit {
 
-  logs: Ilogger[] = [];
-  apilogs: Ilogger[] = [];
+  logs: logger[] = [];
+  apilogs: logger[] = [];
   level: string;
   FireBase: boolean;
   RestAPI: boolean;
@@ -38,10 +40,12 @@ export class LoggingComponent implements OnInit {
     } else if (environment.Logging.IsRestAPI) {
       this.logService.getAllRestLogs().subscribe(data => {
         const logs = data.map(e => {
-          return {
-            loggerId: e['_id'],
-            ...e as Ilogger
-          } as Ilogger;
+          const rtnItem = new ModelMapper(logger).map(e);
+          return rtnItem;
+          // return {
+          //   loggerId: e['_id'],
+          //   ...e as logger
+          // } as logger;
         });
 
         this.apilogs = logs;

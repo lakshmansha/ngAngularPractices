@@ -7,7 +7,7 @@ export const environment = {
   EnvName: "CDEV - ENV",
   Logging: {
     IsFirebase: false,
-    IsRestAPI: false,
+    IsRestAPI: true,
     LogLevel: "Warn"
   },
   FireBase: {
@@ -21,7 +21,7 @@ export const environment = {
     measurementId: "G-6T8HRS609F"
   },
   RestAPI: {
-    LoggingUrl: "http://localhost:5000/logger"
+    LoggingUrl: "https://ngangularpracticesapi.azurewebsites.net/logger"
   }
 };
 
