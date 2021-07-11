@@ -1,0 +1,22 @@
+<h3>Subject Main Component</h3>
+<div class="row">
+  <div class="col-12">
+    Current Value on Subject is <b>{{ info?.message }}</b>
+  </div>
+</div>
+<div class="row mt-2">
+  <div class="col-12">
+    <button class="btn btn-default" (click)="SentMessage()">
+      Sent Message
+    </button>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-6">
+    <app-subject-one></app-subject-one>
+  </div>
+  <div class="col-6">
+    <app-subject-two></app-subject-two>
+  </div>
+</div>
