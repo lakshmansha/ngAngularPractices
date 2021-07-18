@@ -14,9 +14,9 @@
   <ul>
     <li
       *ngFor="let item of Status"
-      [ngStyle]="{ color: getColor(item.Status) }"
+      [ngStyle]="{ color: getColor(item?.Status) }"
     >
-      {{ item.Message }}
+      {{ item?.Message }}
     </li>
   </ul>
 </div>
@@ -27,10 +27,10 @@
     <li
       *ngFor="let item of Status"
       class="default"
-      [class.deff]="item.Status.toLocaleLowerCase() === 'success'"
-      [ngClass]="item.Status.toLocaleLowerCase()"
+      [class.deff]="item?.Status?.toLocaleLowerCase() === 'success'"
+      [ngClass]="item?.Status?.toLocaleLowerCase()"
     >
-      {{ item.Message }}
+      {{ item?.Message }}
     </li>
   </ul>
 </div>
@@ -41,9 +41,9 @@
     <li
       *ngFor="let item of Status"
       class="default"
-      [class.success]="item.Status.toLocaleLowerCase() === 'success'"
+      [class.success]="item?.Status?.toLocaleLowerCase() === 'success'"
     >
-      {{ item.Message }}
+      {{ item?.Message }}
     </li>
   </ul>
 </div>
