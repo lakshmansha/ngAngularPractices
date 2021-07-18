@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { environment } from '../../environments/environment';
+import { environment } from '@environment/environment';
 import { Status } from './IStatus.interface';
 
 @Component({
@@ -12,7 +12,7 @@ import { Status } from './IStatus.interface';
 export class HelloComponent implements OnInit {
   //#region Environment Variables
 
-  EnvName: string;  
+  EnvName: string;
 
   //#endregion
 
