@@ -7,8 +7,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { BlockUIModule } from 'ng-block-ui';
 import { BlockUIHttpModule } from 'ng-block-ui/http';
 
-import { CoreModule } from './core/core.module';
-import { SharedModule } from './shared/shared.module';
+import { CoreModule } from '@core/core.module';
+import { SharedModule } from '@shared/shared.module';
 import { HelloModule } from './hello/hello.module';
 import { NgModelformsModule } from './ng-modelforms/ng-modelforms.module';
 import { ReactiveFrmsModule } from './reactive-frm/reactive-frm.module';
