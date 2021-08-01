@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { TodoComponent } from './todo.component';
 
@@ -8,7 +10,16 @@ describe('TodoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TodoComponent]
+      imports: [
+        RouterTestingModule
+      ],
+      declarations: [TodoComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useValue: { snapshot: { data: { responses: { Todos: [] } } } },
+        },
+      ]
     })
       .compileComponents();
   }));

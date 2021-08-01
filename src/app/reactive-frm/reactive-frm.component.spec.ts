@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { ReactiveFrmsComponent } from './reactive-frm.component';
 
@@ -8,9 +9,12 @@ describe('ReactiveFrmsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReactiveFrmsComponent ]
+      imports: [
+        ReactiveFormsModule
+      ],
+      declarations: [ReactiveFrmsComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
