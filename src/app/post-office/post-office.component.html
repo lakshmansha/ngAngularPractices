@@ -1,0 +1,27 @@
+<div class="card">
+    <div class="card-header">Search Post Office via Pin Code</div>
+    <div class="card-body">
+        <div class="form-group mb-4 col-2">
+            <input class="form-control" type="text" id="txtPinCode" (change)="OnPinCodeChange($event)"/>
+        </div>
+        <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th>Post Office Name</th>
+                <th>City</th>
+                <th>State</th>
+              </tr>
+            </thead>
+            <tbody>   
+                <tr *ngFor="let item of PostOffice">
+                    <td>{{ item.PostOffice }}</td>
+                    <td>{{ item.City }}</td>
+                    <td>{{ item.State }}</td>
+                  </tr>     
+              <tr *ngIf="PostOffice.length === 0">
+                <td colspan="3">No Post Office Available</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
