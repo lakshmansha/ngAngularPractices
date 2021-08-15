@@ -16,6 +16,7 @@ import { LoggingModule } from './logging/logging.module';
 import { TodoModule } from './todo/todo.module';
 import { SchemaModule } from './schema/schema.module';
 import { SubjectModule } from './subject/subject.module';
+import { PostOfficeModule } from './post-office/post-office.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -52,6 +53,7 @@ export function initConfig(appConfigService: AppConfigService) {
     TodoModule,
     SchemaModule,
     SubjectModule,
+    PostOfficeModule,
     AppRoutingModule
   ],
   providers: [
