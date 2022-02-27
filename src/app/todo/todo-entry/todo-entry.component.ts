@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Todo } from '../ITodo.interface';
@@ -9,7 +9,7 @@ import { TodoService } from '../todo.service';
   templateUrl: './todo-entry.component.html',
   styleUrls: ['./todo-entry.component.scss']
 })
-export class TodoEntryComponent implements OnInit, OnChanges {
+export class TodoEntryComponent implements OnInit, OnChanges, AfterContentInit, AfterContentChecked {
   //#region Input Variables
 
   @Input() todo: Todo;
@@ -28,17 +28,31 @@ export class TodoEntryComponent implements OnInit, OnChanges {
   constructor(private formBuilder: FormBuilder, private service: TodoService) {
     this.createForm();
   }
+  
+  //#region Life-Cycle Hooks
 
   ngOnInit(): void {
+    console.log("TodoEntryComponent=> ngOnInit");
   }
 
   ngOnChanges(): void {
+    console.log("TodoEntryComponent=> ngOnChanges");
     if (this.todo !== undefined && this.todo !== null) {
       this.updateForm(this.todo);
     } else {
       this.resetForm();
     }
+  }  
+
+  ngAfterContentInit(): void {
+    console.log("TodoEntryComponent=> ngAfterContentInit");
   }
+
+  ngAfterContentChecked(): void {
+    console.log("TodoEntryComponent=> ngAfterContentChecked");
+  }
+
+  //#endregion
 
   //#region Add Todo Variables
 
