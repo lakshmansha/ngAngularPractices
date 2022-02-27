@@ -7,9 +7,10 @@ import { TodoComponent } from './todo.component';
 import { TodoService } from './todo.service';
 import { TodoResolver } from './todo.resolver';
 import { TodoEntryComponent } from './todo-entry/todo-entry.component';
+import { StatusPipe } from './status.pipe';
 
 @NgModule({
-  declarations: [TodoComponent, TodoEntryComponent],
+  declarations: [TodoComponent, TodoEntryComponent, StatusPipe],
   imports: [
     CommonModule,
     FormsModule,

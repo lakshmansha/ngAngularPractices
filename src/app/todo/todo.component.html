@@ -14,7 +14,7 @@
           <tbody>
             <tr *ngFor="let item of TodoList">
               <td>{{ item.Task }}</td>
-              <td>{{ item.IsCompleted ? "Completed" : "Yet To Complete" }}</td>
+              <td>{{ item.IsCompleted | status }}</td>
               <td><i class="fas fa-edit" (click)="updateForm(item)"></i></td>
             </tr>
             <tr *ngIf="TodoList.length == 0">
