@@ -34,7 +34,7 @@ export function initConfig(appConfigService: AppConfigService) {
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     HttpClientModule,
     BlockUIModule.forRoot(), // Import BlockUIModule
     BlockUIHttpModule.forRoot({
