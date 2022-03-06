@@ -1,0 +1,30 @@
+
+<div class="card">
+    <div class="card-header">Search Github User via name</div>
+    <div class="card-body">
+        <div class="form-group mb-4 col-2">
+            <input class="form-control" type="text" id="txtUserName" (change)="OnUserChange($event)"/>
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <div class="card w-75" *ngIf="UserInfo">
+                    <img
+                      [src]="UserInfo.avatar_url"
+                      class="card-img-top"
+                      alt="..."
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">{{UserInfo.name}}</h5>
+                      <p class="card-text">
+                        {{UserInfo.bio}}
+                      </p>
+                      <h6>Followers</h6>
+                      <div class="row mt-3">
+                          <img class="followers" [src]="item.avatar_url" *ngFor="let item of UserFollowers" [alt]="item.url">
+                      </div>                      
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -21,6 +21,9 @@ export const environment = {
   },
   PostOffice: {
     Url: "https://api.postalpincode.in/pincode/"
+  },
+  Github: {
+    URL: "https://api.github.com/users"
   }
 };
 
