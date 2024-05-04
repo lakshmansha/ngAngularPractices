@@ -12,7 +12,7 @@ export class AppConfigService {
   constructor(private http: HttpClient) { }
 
   public loadConfig() {
-    return this.http.get('./assets/config/config.json')
+    return this.http.get('/api/GetConfig')
       .toPromise()
       .then((config: any) => {
 

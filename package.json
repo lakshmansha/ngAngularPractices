@@ -7,7 +7,8 @@
     "build": "ng build --prod",
     "test": "ng test --code-coverage",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "spa": "swa start dist/angular-basic --api-location api"
   },
   "private": true,
   "dependencies": {
@@ -31,6 +32,7 @@
     "@angular-devkit/build-angular": "~0.1000.6",
     "@angular/cli": "~10.0.6",
     "@angular/compiler-cli": "~10.0.9",
+    "@azure/static-web-apps-cli": "^1.1.7",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
