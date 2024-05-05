@@ -3,19 +3,17 @@ import { HttpClient } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppConfigService {
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public loadConfig() {
-    return this.http.get('./assets/config/config.json')
+    return this.http
+      .get('/api/GetConfig')
       .toPromise()
       .then((config: any) => {
-
         // Enabled Option Only for Production Build.
         if (environment.production) {
           // Set EnvName to Environment via Config.json File.
@@ -25,7 +23,7 @@ export class AppConfigService {
           }
 
           if (config.IsFirebase != undefined) {
-            environment.Logging.IsFirebase = config.IsFirebase;
+            environment.Logging.IsFirebase = config.IsFirebase === 'true';
 
             if (config.FireBaseAPIKey != undefined) {
               environment.FireBase.apiKey = config.FireBaseAPIKey;
@@ -33,7 +31,7 @@ export class AppConfigService {
           }
 
           if (config.IsRestAPI != undefined) {
-            environment.Logging.IsRestAPI = config.IsRestAPI;
+            environment.Logging.IsRestAPI = config.IsRestAPI === 'true';
 
             if (config.RESTLoggingUrl != undefined) {
               environment.RestAPI.LoggingUrl = config.RESTLoggingUrl;
@@ -51,5 +49,4 @@ export class AppConfigService {
         console.error(err);
       });
   }
-
 }
