@@ -8,7 +8,7 @@
     "test": "ng test --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "spa": "swa start dist/angular-basic --api-location api"
+    "swa": "swa start dist --api-location api"
   },
   "private": true,
   "dependencies": {
